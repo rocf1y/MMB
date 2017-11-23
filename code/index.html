@@ -6,23 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>慢慢买项目</title>
-    <!-- 第三方包-->
+    <!-- bootatrap的样式 -->
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
     <!-- 公共样式 -->
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet/less" href="css/base.less">
+    <!-- <link rel="stylesheet" href="css/base.css"> -->
     <!-- 首页样式 -->
-    <link rel="stylesheet" href="css/index.css">
-    <!-- less文件 -->
+    <link rel="stylesheet/less" href="css/index.less">
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+    <!-- less.js -->
     <script src="lib/less/less.js"></script>
 </head>
 
 <body>
     <!-- 头部 B -->
     <header id="header">
-        <a href="#" class="logo">
+        <a href="#" id="logo">
             <img src="images/header_logo.png" alt="">
         </a>
-        <a href="#" class="app">
+        <a href="#" id="app">
             <img src="images/header_app.png" alt="">
         </a>
     </header>
@@ -30,7 +32,7 @@
     <!-- 搜索 B -->
     <section id="search">
         <form action="#">
-            <input type="search" placeholder="macbook">
+            <input type="search" placeholder="MacPro">
             <input type="submit" value="go">
         </form>
     </section>
@@ -115,13 +117,16 @@
     <!-- 菜单 E -->
     <!-- 推荐 B -->
     <section id="recommend">
+        <!-- 推荐标题 B -->
         <div class="recommend_title">
             <span>更多优惠信息</span>
             <img src="http://www.zuyushop.com/wap/images/more.png" alt="">
         </div>
+        <!-- 推荐标题 E -->
+        <!-- 推荐商品 B -->
         <div class="recommend_product">
             <div class="media">
-                <div class="media-left">
+                <div class="media-left media-middle">
                     <a href="#">
                         <img class="media-object" src="http://cacheimg.manmanbuy.com/r_img/cacheimg.aspx?width=600&imgurl=http://a.manmanbuy.com:8013/cuxiaoPic/201610/201610001412282758.jpg"
                             alt="...">
@@ -132,61 +137,66 @@
                         <span>10.9元</span>
                     </h4>
                     <div class="other">
-                        <span class="other_shop">京东商城 | 10-25 14:10</span>
+                        <span class="other_shop">京东商城| 10-25 14:10</span>
                         <span class="other_talk">1</span>
                     </div>
-
                 </div>
             </div>
         </div>
+        <!-- 推荐商品 E -->
+        <!-- 推荐更多 B -->
         <div class="recommend_more">
             <a href="#">更多优惠信息</a>
         </div>
+        <!-- 推荐更多 E -->
+
     </section>
     <!-- 推荐 E -->
     <!-- 底部 B -->
-    <footer id="footer">
+    <section id="footer">
         <div class="recommend_title">
             <span>更多优惠信息</span>
             <img src="http://www.zuyushop.com/wap/images/more.png" alt="">
         </div>
         <div class="login_box">
-            <div class="login">登录</div>
-            <div class="register">注册</div>
+            <div class="login">
+                <a href="#">登录</a>
+            </div>
+            <div class="resgiter">
+                <a href="#">注册</a>
+            </div>
             <div class="gotop">
-                <img src="http://www.zuyushop.com/wap/images/top.jpg" alt=""> 返回顶部
+                <img src="http://www.zuyushop.com/wap/images/top.jpg" alt="">
+                <a href="#">返回顶部</a>
             </div>
         </div>
         <div class="info">
-            <span>手机信息</span>
-            <span>手机信息</span>
-            <span>手机信息</span>
+            <span>手机下载</span>
+            <span>手机下载</span>
+            <span>手机下载</span>
         </div>
-    </footer>
+    </section>
     <!-- 底部 E -->
-
+    <!-- menuTpl B -->
     <script type="text/template" id="menuTpl">
         {{each result as value index}} 
         <div class="col-xs-3">
-                <a href="{{value.titlehref}}">
+                <a href="{{value.titlehre}}">
                     {{#value.img}}
                     <p>{{value.name}}</p>
                 </a>
             </div>
-
        {{/each}} 
-       
-    </script>
-
-
-    <script type="text/template" id="getRecommendStyle">
-        {{each result as value index}} 
     
-        <div class="recommend_product">
+    </script>
+    <!-- menuTpl E -->
+    <!-- recommendTpl B -->
+    <script type="text/template" id="recommendTpl">
+        {{each result as value index}}
                 <div class="media">
-                    <div class="media-left">
+                    <div class="media-left media-middle">
                         <a href="#">
-                            {{#value.productImgSm}}
+                                {{#value.productImgSm}}
                         </a>
                     </div>
                     <div class="media-body">
@@ -194,22 +204,21 @@
                             <span>{{value.productPinkage}}</span>
                         </h4>
                         <div class="other">
-                            <span class="other_shop">{{value.productFrom}}</span>
+                            <span class="other_shop">{{value.productFrom}} | {{value.productTime}}</span>
                             <span class="other_talk">{{value.productComCount}}</span>
                         </div>
-    
                     </div>
                 </div>
-            </div>
-    
+      
     {{/each}}
     </script>
-    <script src="lib/jquery/jquery.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
-    <script src="js/template.js"></script>
-    <script src="js/url.js"></script>
-    <script src="js/index.js"></script>
+    <!-- recommendTpl E -->
+    <script src="./lib/jquery/jquery.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.js"></script>
 
+    <script src="js/url.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
